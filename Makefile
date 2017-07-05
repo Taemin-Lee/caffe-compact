@@ -3,7 +3,7 @@ CXX=$(CROSS_COMPILE)g++
 AR=$(CROSS_COMPILE)ar
 PROJECT := caffe
 STATIC_NAME := lib$(PROJECT).a
-USE_EIGEN?=n
+USE_EIGEN?=y
 
 CXX_SRCS := $(shell find src/$(PROJECT) ! -name "test_*.cpp" -name "*.cpp")
 HXX_SRCS := $(shell find include/$(PROJECT) ! -name "*.hpp")
@@ -26,7 +26,7 @@ LIBRARIES:=protobuf
 
 ifeq ($(USE_EIGEN), y)
 	CXXFLAGS += -DUSE_EIGEN
-	CXXFLAGS += -I./eigen3
+	CXXFLAGS += -I/usr/include/eigen3
 else
 	LIBRARIES += cblas
 endif
